@@ -9,7 +9,7 @@ if kubectl get installation.operator.tigera.io default >/dev/null 2>&1; then
 fi
 
 echo "Installing Calico CRDs..."
-kubectl apply -f /workspace/calico/v3_projectcalico_org-v1beta1.yaml
+kubectl apply --server-side --force-conflicts -f /workspace/calico/v3_projectcalico_org-v1beta1.yaml
 
 echo "Waiting for Calico CRDs..."
 kubectl wait --for=condition=Established \
