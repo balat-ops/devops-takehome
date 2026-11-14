@@ -30,4 +30,4 @@ USER appuser
 EXPOSE 8080
 
 # Start application using Gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:8080", "--workers", "2", "--threads", "4", "--worker-tmp-dir", "/tmp", "--access-logfile", "-", "app.main:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "--workers", "1", "--threads", "4", "--worker-tmp-dir", "/tmp", "--access-logfile", "-", "app.main:app"]
