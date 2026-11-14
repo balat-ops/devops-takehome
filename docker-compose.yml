@@ -1,0 +1,17 @@
+services:
+  toolbox:
+    build:
+      context: ./toolbox
+      dockerfile: Dockerfile
+    image: devops-assessment-toolbox:1.0
+    container_name: devops-assessment-toolbox
+    working_dir: /workspace
+    command: ["/workspace/scripts/00-bootstrap.sh"]
+    environment:
+      KUBECONFIG: /workspace/.kube/config
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - .:/workspace
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: unless-stopped

@@ -20,3 +20,12 @@ venv/
 # Local files
 .DS_Store
 *.log
+
+# Local Kubernetes credentials
+.kube/
+.kubeconfig
+kubeconfig
+
+# Local runtime and temporary files
+.tmp/
+*.pid
