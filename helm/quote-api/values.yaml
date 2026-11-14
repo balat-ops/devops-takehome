@@ -1,8 +1,8 @@
 replicaCount: 3
 
 image:
-  repository: quote-api
-  tag: local
+  repository: ghcr.io/balat-ops/quote-api
+  tag: "4899f4c"
   pullPolicy: IfNotPresent
 
 service:
