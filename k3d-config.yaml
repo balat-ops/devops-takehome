@@ -1,0 +1,28 @@
+apiVersion: k3d.io/v1alpha5
+kind: Simple
+metadata:
+  name: devops-assessment
+
+servers: 1
+agents: 4
+
+ports:
+  - port: 8080:80
+    nodeFilters:
+      - loadbalancer
+
+options:
+  k3s:
+    extraArgs:
+      - arg: --flannel-backend=none
+        nodeFilters:
+          - server:*
+      - arg: --disable-network-policy
+        nodeFilters:
+          - server:*
+      - arg: --kube-apiserver-arg=feature-gates=MutatingAdmissionPolicy=true
+        nodeFilters:
+          - server:*
+      - arg: --kube-apiserver-arg=runtime-config=admissionregistration.k8s.io/v1beta1=true
+        nodeFilters:
+          - server:*
